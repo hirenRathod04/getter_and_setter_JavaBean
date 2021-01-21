@@ -10,19 +10,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-private TextView textView_name;
-private EditText editText_name;
+private TextView tvGetname;
+private EditText etSetname;
 Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
-
-                textView_name = findViewById ( R.id.tv_name );
-        editText_name = findViewById ( R.id.editTextTextPersonName ) ;
+        etSetname = findViewById ( R.id.et_Setname ) ;
+        tvGetname = findViewById ( R.id.tv_Getname );
         button = findViewById ( R.id.button );
 
-
+        String name = etSetname.getText().toString().trim ();
 
 
 
@@ -30,12 +29,13 @@ Button button;
             @Override
             public void onClick(View v) {
 
-                String emailString = (String) editText_name.getText().toString();
-                Log.d("email",emailString);
+
+                Log.d("Name : ",name);
+
                 JavaBean_getter_setter.Employee e = new JavaBean_getter_setter.Employee ();//object is created
-                e.setName(emailString);//setting value to the object
-                String   textView_name1 = e.getName ().trim ();
-                textView_name.setText(textView_name1);
+                e.setName(name);//setting value to the object
+                String  getname = e.getName ().trim ();//getting value to the object
+                tvGetname.setText(getname);
 
 
 
